@@ -8,7 +8,6 @@ namespace MVC.Dtos
 {
     public class ClienteDto
     {
-        [Required]
         public int Id { get; set; }
 
         [Required, StringLength(255)]
