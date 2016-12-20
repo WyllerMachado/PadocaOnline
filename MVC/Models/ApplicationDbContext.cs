@@ -5,7 +5,6 @@ namespace MVC.Models
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Fornada> Fornadas { get; set; }
         
         public ApplicationDbContext()

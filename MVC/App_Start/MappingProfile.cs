@@ -13,11 +13,10 @@ namespace MVC
         protected override void Configure()
         {
             // Domain to Dto
-            CreateMap<Cliente, ClienteDto>();
+            CreateMap<Fornada, FornadaDto>();
 
             // Dto to Domain
-            CreateMap<ClienteDto, Cliente>()
-                .ForMember(c => c.Id, opt => opt.Ignore());
+            CreateMap<FornadaDto, Fornada>().ForMember(c => c.Id, opt => opt.Ignore());
         }
     }
 }

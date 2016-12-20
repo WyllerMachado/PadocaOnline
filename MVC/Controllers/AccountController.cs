@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using MVC.Models;
@@ -152,10 +153,24 @@ namespace MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Nome = model.Nome,
+                    Endereco = model.Endereco
+                };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // Temp code
+                    /*
+                    var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    var rolerManager = new RoleManager<IdentityRole>(roleStore);
+                    await rolerManager.CreateAsync(new IdentityRole("GerenciaFornadas"));
+                    await UserManager.AddToRoleAsync(user.Id, "GerenciaFornadas");
+                    */
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -368,7 +383,13 @@ namespace MVC.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Nome = model.Nome,
+                    Endereco = model.Endereco
+                };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

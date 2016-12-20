@@ -6,8 +6,18 @@ namespace MVC.ViewModels
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
+        [Display(Name = "Nome")]
+        [StringLength(255)]
+        public string Nome { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Endereço")]
+        [StringLength(255)]
+        public string Endereco { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -65,9 +75,19 @@ namespace MVC.ViewModels
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Nome")]
+        [StringLength(255)]
+        public string Nome { get; set; }
+        
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Endereço")]
+        [StringLength(255)]
+        public string Endereco { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

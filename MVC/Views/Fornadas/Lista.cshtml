@@ -1,0 +1,39 @@
+﻿@model MVC.ViewModels.FornadaIndexViewModel
+
+@{
+    ViewBag.Title = "Fornadas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ultima Fornada</h2>
+
+<p>
+    @Html.ActionLink("Nova Fornada", "Nova", "Fornadas", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hora)
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Hora)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id = Model.Id }) |
+            @Html.ActionLink("Remover", "Delete", new { id = Model.Id })
+        </td>
+    </tr>
+
+</table>
